@@ -1,15 +1,35 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Post, Group
 
 
 def index(request):
-    return HttpResponse('Main page')
+    title = 'Последние обновления на сайте'
+    posts = Post.objects.order_by('-pub_date')[:10]
+    context = {
+        'title': title,
+        'posts': posts,
+    }
+    return render(request, 'posts/index.html', context)
 
-def group_list(request):
-    return HttpResponse('Groups')
 
-def posts_filter_by_group(request, group_name):
-    return HttpResponse(f'Posts about: {group_name}')
+def group_posts(request, slug):
+    group = get_object_or_404(Group, slug=slug)
+    posts = Post.objects.filter(group=group).order_by('-pub_date'[:10])
+    title = f'Записи сообщества {group.slug}'
+    context = {
+        'title': title,
+        'group': group,
+        'posts': posts,
+        'slug': slug,
+    }
+    return render(request, 'posts/group_list.html', context)
 
-#def posts(request, slug):
-#   return HttpResponse(f'Post {slug}')
+
+def groups(request):
+    title = 'Список групп'
+    groups = Group.objects.all()
+    context = {
+        'title': title,
+        'groups': groups,
+    }
+    return render(request, 'posts/all_groups.html', context)
