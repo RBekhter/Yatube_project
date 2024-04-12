@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Профайл пользователя {{ username }}{% endblock title %}
+ {% block content %}
+    <main>
+      <div class="container py-5">        
+        <h1>Пользователь {{ username }} </h1>
+        <div class="container py-3">
+        <h3>Всего постов: {{ sum }} </h3>
+        </div>
+        <article>
+        {% for post in page_obj %}
+        <div class="container py-3">
+          <ul>
+            <li>
+              Автор: {{ post.author.get_full_name }}
+              <a href="{% url 'posts:author_posts' post.author_id %}">все посты пользователя</a>
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date|date:"d E Y" }}
+            </li>
+          </ul>
+        </div>
+          <div class="container py-3">
+          <p>
+            <a href="{% url 'posts:post_detail' post.pk %}">
+            {{ post.text }}
+            </a>
+          </p>
+        </div>
+          <div class="container py-32">
+          <a href="{% url 'posts:post_detail' post.pk %}">подробная информация</a>
+          </div>
+        </article>
+        
+        {% if post.group %}
+         <div class="container py-2">      
+        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>        
+        {% endif %}
+         </div>
+        {% if not forloop.last %}
+          <hr>
+        {% endif %}
+      {% endfor %}
+        <!-- Остальные посты. после последнего нет черты -->
+        <!-- Здесь подключён паджинатор -->
+        {% include 'posts/includes/paginator.html' %}  
+      </div>
+    </main>
+    {% endblock content %}

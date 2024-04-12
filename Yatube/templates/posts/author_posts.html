@@ -1,17 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-{% for post in page_obj %}
+{% for post in posts %}
 <div class="container py-5">
   <!--<h1>Последние обновления на сайте</h1>-->
   <article>
     <ul>
-      <li>
-        Автор:
-        <a href="{% url 'posts:profile' post.author %}">
-        {{ post.author.get_full_name }}
-        </a>
-      </li>
       <li>
         Дата публикации: {{ post.pub_date|date:"d E Y" }}
       </li>
@@ -24,9 +17,5 @@
     {% endif %}
     {% if not forloop.last %}
     <hr>{% endif %}
-</div>
 {% endfor %}
-
-{% include 'posts/includes/paginator.html' %}
-
-{% endblock %}
+{% endblock content %}

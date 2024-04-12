@@ -14,7 +14,7 @@
     <!-- Подключен файл со стандартными стилями бустрап -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <title>{{title}}</title>
+    <title>{% block title %}{{title}}{% endblock title %}</title>
   </head>
   <body>
     <header>

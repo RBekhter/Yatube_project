@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{postid.text|truncatechars:30}}{% endblock title %}
+{% block content %}
+    <main>
+      <div class="container py-5">
+      <div class="row">
+        <aside class="col-12 col-md-3">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Дата публикации: {{postid.pub_date|date:"d E Y"}} 
+            </li>
+            {% if postid.group %}  
+            <li class="list-group-item">
+              Группа: {{ postid.group }}
+              <a href="{% url 'posts:group_list' postid.group.slug %}">
+                все записи группы
+              </a>
+            {% endif %}
+            </li>
+            <li class="list-group-item">
+              Автор: <a href="{% url 'posts:profile' postid.author %}">
+              {{ postid.author.get_full_name }}
+              </a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Всего постов автора: <span >{{ sum }}</span>
+            </li>
+            <li class="list-group-item">
+              <a href="{% url 'posts:author_posts' postid.author_id %}">
+                все посты пользователя
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <article class="col-12 col-md-9">
+          <p>
+           {{ postid.text }}
+          </p>
+          <div class="container py-5">
+          <!-- эта кнопка видна только автору -->
+          {% if request.user == postid.author %}
+          <a class="btn btn-primary" href="{% url 'posts:post_edit' postid.pk %}">
+            редактировать
+          </a>
+          {% endif %}
+        </div>         
+        </article>
+      </div>
+    </div>
+    </main>
+    {% endblock content %}
