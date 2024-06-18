@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Group
+from .models import Post, Comment
 
 
 def validate_not_empty(value):
@@ -11,7 +11,7 @@ def validate_not_empty(value):
 class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('text', 'group')
+        fields = ('text', 'group', 'image')
 
     #def clean_text(self):
      #   data = self.cleaned_data['text']
@@ -19,11 +19,14 @@ class PostCreateForm(forms.ModelForm):
      #       raise forms.ValidationError('А кто поле будет заполнять, Пушкин?')
       #  return data
 
-
-
 #class PostCreateForm(forms.Form):
  #   text = forms.CharField(widget=forms.Textarea,
  #                          validators=[validate_not_empty])
     #group = forms.IntegerField()
  #   group = forms.ChoiceField(required=False, validators=[validate_not_empty])
     
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)

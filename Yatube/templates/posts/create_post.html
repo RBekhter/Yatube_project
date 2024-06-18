@@ -31,16 +31,17 @@
               {% endfor %}
               {% endif %}
 
-                <form method="post" action="{%url 'posts:post_create' %}">
+                <form method="post" enctype="multipart/form-data">
+                           <!-- action="{%url 'posts:post_create' %}"> -->
                   {% csrf_token %}
                   {% for field in form %}
           <div class="form-group row my-3 p-3">
-            <!--<label for="{{ field.id_for_label }}">
+            <label for="{{ field.id_for_label }}">
               {{ field.label }}
               {% if field.field.required %}
               <span class="required text-danger">*</span>
               {% endif %}
-            </label>-->
+            </label>
             {{ field|addclass:'form-control' }}
             {% if field.help_text %}
             <small id="{{ field.id_for_label }}-help" class="form-text text-muted">
