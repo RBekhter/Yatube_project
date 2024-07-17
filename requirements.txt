@@ -1,4 +1,7 @@
 Django==2.2.19
-pytz==2024.1
-sqlparse==0.4.4
 django-debug-toolbar==3.2.4
+djangorestframework==3.12.4
+pillow==10.4.0
+pytz==2024.1
+sorl-thumbnail==12.10.0
+sqlparse==0.4.4
