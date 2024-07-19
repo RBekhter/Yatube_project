@@ -6,6 +6,7 @@
 ### Technologies
 Python 3.9
 Django 2.2.19
+Django Rest Framework 3.12.4
 
 ### Run project on dev-mode
 - install and activate virtual environment

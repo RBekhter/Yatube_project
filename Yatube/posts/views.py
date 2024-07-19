@@ -9,15 +9,21 @@ from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
 
 
-@cache_page(60 * 0.3, key_prefix='index')
+#@cache_page(60 * 0.3, key_prefix='index')
 def index(request):
     title = 'Последние обновления на сайте'
-    post_list = Post.objects.all().order_by('-pub_date')
+    keyword = request.GET.get("q", None)
+    if keyword:
+        post_list = Post.objects.select_related(
+            'author', 'group').filter(text__contains=keyword)
+    else:
+        post_list = Post.objects.all().order_by('-pub_date')
+
     paginator = Paginator(post_list, 10)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
+
     context = {
-        #'posts': posts,
         'title': title,
         'page_obj': page_obj,
     }

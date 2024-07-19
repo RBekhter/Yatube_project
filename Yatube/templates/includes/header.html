@@ -14,6 +14,15 @@
       {% endcomment %}
       <ul class="nav nav-pills">
         <li class="nav-item"> 
+                <form class="form-inline" action="/">
+                  <div class="form-row">
+                  <input name="q" class="form-control form-control-sm" style="background-color:lightskyblue" type="search" 
+                    placeholder="Поиск" {% if keyword %}value="{{ keyword }}"{% endif %}>
+                  <!--<button class="btn" type="submit">Найти</button>-->
+                  </div>
+                </form>
+        </li>
+        <li class="nav-item"> 
           <a class="nav-item nav-link
           {% if view_name == 'about:author' %}active{% endif %}"
           href="{% url 'about:author' %}">Об авторе</a>
@@ -28,16 +37,16 @@
           href="{% url 'posts:post_create' %}">Новая запись</a>
         </li>
         <li class="nav-item"> 
-          <a class="nav-link link-light
+          <a class="nav-link
           {% if view_name == 'users:password_change_form' %}active{% endif %}"
           href="{% url 'users:password_change_form' %}">
             Изменить пароль</a>
         </li>
         <li class="nav-item"> 
-          <a class="nav-link link-light" href="{% url 'users:logout' %}">
+          <a class="nav-link" href="{% url 'users:logout' %}">
             Выйти</a>
         </li>
-        <li class="nav-item nav-link" style="color:yellow">
+        <li class="nav-item nav-link" style="color:red">
           {{ user.username }}
         </li>
         {% else %}

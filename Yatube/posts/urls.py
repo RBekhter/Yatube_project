@@ -3,7 +3,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
-#from .views import MainView
 
 app_name = 'posts'
 
