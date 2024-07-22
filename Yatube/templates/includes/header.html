@@ -46,8 +46,10 @@
           <a class="nav-link" href="{% url 'users:logout' %}">
             Выйти</a>
         </li>
-        <li class="nav-item nav-link" style="color:red">
-          {{ user.username }}
+        <li class="nav-item">
+          <a class="nav-link" style="color:red" href="{% url 'posts:my_profile' %}">
+            {{ user.username }}
+           </a>
         </li>
         {% else %}
         <li class="nav-item"> 

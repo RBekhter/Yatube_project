@@ -7,6 +7,7 @@
         <h1>Пользователь {{ username }} </h1>
         <div class="container py-3">
         <h3>Всего постов: {{ sum }} </h3>
+        {% if request.user.username != username %}
         </div>
         {% if following %}
     <a
@@ -22,6 +23,7 @@
       >
         Подписаться
       </a>
+   {% endif %}
    {% endif %}
         <article>
         {% for post in page_obj %}

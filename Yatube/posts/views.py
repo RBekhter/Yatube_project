@@ -55,7 +55,9 @@ def groups(request):
     return render(request, 'posts/all_groups.html', context)
 
 
-def profile(request, username: str):
+def profile(request, username=None):
+    if username is None:
+        username = request.user.username
     author = get_object_or_404(User, username=username)
     posts = Post.objects.filter(
         author__username=username).order_by('-pub_date')

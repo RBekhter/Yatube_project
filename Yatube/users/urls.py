@@ -3,7 +3,7 @@ from django.urls import path
 
 from . import views
 
-# template_name='users/logged_out.html'
+
 app_name = 'users'
 
 urlpatterns = [
