@@ -13,6 +13,8 @@ SECRET_KEY = '1si8=or@qszmgdoiu6sxw(o(bpnq1i%=++n$j7fb0o76$&p=xi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+THUMBNAIL_DEGUG = True
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',

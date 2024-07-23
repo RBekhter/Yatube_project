@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block title %}Custom 404{% endblock title %}
+{% block title %}Страница не найдена{% endblock title %}
 {% block content %}
 
-  <h1>Custom 404</h1>
+  <p>
+  <h1>О, нет! Страница не найдена</h1>
+  </p>
   <p>Страницы с адресом {{ path }} не существует</p>
   <a href="{% url 'posts:index' %}">Перейти на главную</a>
 

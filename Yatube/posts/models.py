@@ -13,18 +13,15 @@ class Group(models.Model):
     def __str__(self):
         return (f'{self.title}')
 
-    # def get_absolute_url(self):
-        # return reverse("model_detail", kwargs={"pk": self.pk})
-
 
 class Post(models.Model):
     text = models.TextField('Текст поста', help_text='Введите текст поста')
+                            #validators=[not_empty])
     pub_date = models.DateTimeField(auto_now_add=True, db_index=True)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='posts',
-        verbose_name='Артур'
         )
     group = models.ForeignKey(
         Group,
@@ -61,7 +58,6 @@ class Comment(CreatedModel):
             related_name='comments',
     )
     text = models.CharField('Текст комментария', max_length=200)
-    #created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return (f'{self.text}')

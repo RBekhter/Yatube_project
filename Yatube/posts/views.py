@@ -82,17 +82,14 @@ def profile(request, username=None):
 
 
 def post_detail(request, post_id):
-    postid = Post.objects.get(id=post_id)
+    post = get_object_or_404(Post, id=post_id)
     form = CommentForm()
     comments = Comment.objects.filter(post_id=post_id)
-    print(comments)
-    author = postid.author
+    author = post.author
     all_posts = Post.objects.filter(author=author)
     sum_of_posts = len(all_posts)
-    print(request.user.username)
-    print(author)
     context = {
-        'postid': postid,
+        'post': post,
         'sum': sum_of_posts,
         'form': form,
         'comments': comments,
@@ -113,7 +110,8 @@ def author_posts(request, author_id):
 def post_create(request):
     groups = Group.objects.all()
     if request.method == 'POST':
-        form = PostCreateForm(request.POST)
+        form = PostCreateForm(
+            request.POST, files=request.FILES or None)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -138,7 +136,6 @@ def post_edit(request, post_id):
     )
     if form.is_valid():
         form.save()
-        #print(post.image)
         return redirect('posts:post_detail', post_id=post_id)
     context = {
         'post': post,
@@ -191,43 +188,3 @@ def profile_unfollow(request, username):
     Follow.objects.filter(user=request.user).filter(
         author=unfollow_from_author).delete()
     return redirect('posts:profile', username=username)
-
-
-#def postt_edit_old(request, post_id):
- #   groups = Group.objects.all()
- #   is_edit = True
-  #  if request.method == 'POST':
-  #      post = Post.objects.get(pk=post_id)
-  #      form = PostCreateForm(instance=post)
-  #      print(post.author)
-   #     print(request.user.username)
-   #     if str(post.author) == request.user.username:
-  #          if form.is_valid():
-   #             post.save()
-   #             form.save()
-   #             return redirect('posts:profile', request.user.username)
-   #     else:
-  #          return HttpResponse('Редактировать пост может только его автор')
-
-   # post = Post.objects.get(pk=post_id)
-   # print(post.author)
-   # print(request.user.username)
-    #if str(post.author) == request.user.username:
-     #   #post = Post.objects.get(pk=post_id)
-     #   form = PostCreateForm(instance=post)
-     #   context = {
-     #       'form': form,
-     #       'is_edit': is_edit,
-     #       'groups': groups
-     #   }
-     #   return render(request, 'posts/create_post.html', context)
-  #  else:
-  #      return HttpResponse('Редактировать пост может только его автор')
-
-
-
-
-#class PostCreate(CreateView):
- #   form_class = PostForm
- #   template_name = 'posts/create_post.html'
- #   success_url = 'profile/<str:username>'
