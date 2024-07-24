@@ -57,7 +57,7 @@ class Comment(CreatedModel):
             on_delete=models.CASCADE,
             related_name='comments',
     )
-    text = models.CharField('Текст комментария', max_length=200)
+    text = models.CharField('Текст комментария', max_length=300)
 
     def __str__(self):
         return (f'{self.text}')
