@@ -35,13 +35,13 @@ class PostURLTests(TestCase):
 
     def setUp(self):
         self.guest_client = Client()
-        self.autorized_client = Client()
-        self.autorized_client.force_login(self.user)
+        self.authorized_client = Client()
+        self.authorized_client.force_login(self.user)
 
     def test_new_url_redirect_anonymous_on_login(self):
         """Страница создания поста перенаправит
         неавторизованного пользователя на страницу входа"""
-        
+
         response = self.guest_client.get('/post/new/', follow=True)
         self.assertRedirects(
             response, ('/auth/login/?next=/post/new/')
@@ -63,14 +63,14 @@ class PostURLTests(TestCase):
 
         for template, address in templates_url_names.items():
             with self.subTest(address=address):
-                response = self.autorized_client.get(address)
+                response = self.authorized_client.get(address)
                 self.assertTemplateUsed(response, template)
 
     def test_edit_url_open_author(self):
         """Проверка доступности страницы редактирования поста только автору"""
         print(self.test_edit_url_open_author.__doc__)
 
-        response = self.autorized_client.get('post/1/edit/')
+        response = self.authorized_client.get('post/1/edit/')
 
         if self.user.username == self.post.author:
             self.assertEqual(response.status_code, 200)
