@@ -1,7 +1,7 @@
 # Yatube_project
 Социальная сеть блогеров
 
-Она дает пользователям возможность создать учетную запись, публиковать записи, подписываться на любимых авторов и отмечать понравившиеся записи
+Yatube дает пользователям возможность создать учетную запись, публиковать записи, подписываться на любимых авторов и отмечать понравившиеся записи
 
 ### Technologies
 Python 3.9
@@ -15,5 +15,9 @@ pip install -r requirements.txt
 
 - in manage.py directory run the command:
 python3 manage.py runserver
+
+### API Yatube
+This API is designed based on the REST architecture
+[More about API Yatube](Yatube/api/README.md)
 
 ### Author RBexter
