@@ -12,6 +12,9 @@ Django Rest Framework 3.12.4
 - install and activate virtual environment
 - install relations in requirements.txt
 pip install -r requirements.txt
+- make migrations
+python manage.py makemigrations
+python manage.py migrate
 
 - in manage.py directory run the command:
 python3 manage.py runserver
