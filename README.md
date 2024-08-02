@@ -1,7 +1,9 @@
 # Yatube_project
 Социальная сеть блогеров
 
-Yatube дает пользователям возможность создать учетную запись, публиковать записи, подписываться на любимых авторов и отмечать понравившиеся записи
+Yatube дает пользователям возможность создать учетную запись, публиковать записи, подписываться на любимых авторов и отмечать понравившиеся записи.
+В процессе разработки я упражнялся с Django, Django ORM, Django REST Framework. С помощью библиотеки Unittest написаны тесты. При создании шаблонов были использованы HTML и CSS (Bootstrap).
+С помощью библиотеки sorl-thumbnail реализована возможность добавлять картинки к постам
 
 ### Technologies
 Python 3.9
@@ -20,7 +22,7 @@ python manage.py migrate
 python3 manage.py runserver
 
 ### API Yatube
-This API is designed based on the REST architecture
+API is designed using the REST architecture
 [More about API Yatube](Yatube/api/README.md)
 
 ### Author RBexter

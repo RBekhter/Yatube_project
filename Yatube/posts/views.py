@@ -1,15 +1,16 @@
-from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Group, Comment, Follow, User
 from django.contrib.auth.decorators import login_required
-#from django.contrib.auth import get_user_model
-#from django.views.generic.edit import CreateView
-from .forms import PostCreateForm, CommentForm
+from django.core.paginator import Paginator
 from django.http import HttpResponse
-from django.views.decorators.cache import cache_page
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import CommentForm, PostCreateForm
+from .models import Comment, Follow, Group, Post, User
+
+# from django.views.decorators.cache import cache_page
 
 
-#@cache_page(60 * 0.3, key_prefix='index')
+
+# @cache_page(60 * 0.3, key_prefix='index')
 def index(request):
     title = 'Последние обновления на сайте'
     keyword = request.GET.get("q", None)
@@ -58,6 +59,7 @@ def groups(request):
 def profile(request, username=None):
     if username is None:
         username = request.user.username
+
     author = get_object_or_404(User, username=username)
     posts = Post.objects.filter(
         author__username=username).order_by('-pub_date')
@@ -118,7 +120,7 @@ def post_create(request):
             post.save()
             form.save()
             return redirect('posts:profile', request.user.username)
-            #return redirect('posts:post_detail', post.post_id)
+            # return redirect('posts:post_detail', post.post_id)
     form = PostCreateForm()
     return render(request, 'posts/create_post.html',
                   {'form': form, 'groups': groups})
@@ -127,7 +129,7 @@ def post_create(request):
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if post.author != request.user:
-        return HttpResponse('Редактировать пост может только его авторр')
+        return HttpResponse('Редактировать пост может только его автор')
 
     form = PostCreateForm(
         request.POST or None,

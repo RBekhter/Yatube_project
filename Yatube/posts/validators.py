@@ -8,7 +8,7 @@ def not_empty(value):
 
 
 def clean_text(self):
-        data = self.cleaned_data['text']
-        if data == '':
-            raise forms.ValidationError('А кто поле будет заполнять, Пушкин?')
-        return data
+    value = self.cleaned_data['text']
+    if value == '':
+        raise forms.ValidationError('А кто поле будет заполнять, Пушкин?')
+    return value
