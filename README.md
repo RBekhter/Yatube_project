@@ -12,6 +12,9 @@ Django 2.2.19
 Django Rest Framework 3.12.4
 
 ### Run project on dev-mode
+- Clone repository and go it on the command line:
+git clone https://github.com/RBekhter/Yatube_project.git
+cd Yatube_project
 - install and activate virtual environment
 - install relations in requirements.txt
 pip install -r requirements.txt
