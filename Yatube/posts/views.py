@@ -9,7 +9,6 @@ from .models import Comment, Follow, Group, Post, User
 # from django.views.decorators.cache import cache_page
 
 
-
 # @cache_page(60 * 0.3, key_prefix='index')
 def index(request):
     title = 'Последние обновления на сайте'
