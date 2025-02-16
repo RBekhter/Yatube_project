@@ -15,6 +15,13 @@ OK: token
 
 ## Query examples:
 ```
+POST..http://127.0.0.1:8000/api/v1/posts/
+body:
+{
+    "text": "Пост через Postman"
+}
+```
+```
 GET..http://127.0.0.1:8000/api/v1/posts/
 OK:
 [
@@ -27,13 +34,4 @@ OK:
     }
 ]
 ```
-
 `GET..http://127.0.0.1:8000/api/v1/posts/7/comments/`
-
-```
-POST..http://127.0.0.1:8000/api/v1/posts/
-body:
-{
-    "text": "Пост через Postman"
-}
-```
