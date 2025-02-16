@@ -30,7 +30,8 @@ OK:
 
 * GET..http://127.0.0.1:8000/api/v1/posts/7/comments/
 
-```POST..http://127.0.0.1:8000/api/v1/posts/
+```
+POST..http://127.0.0.1:8000/api/v1/posts/
 body:
 {
     "text": "Пост через Postman"
