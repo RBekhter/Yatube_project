@@ -18,13 +18,13 @@ git clone https://github.com/RBekhter/Yatube_project.git
 - install relations in requirements.txt:
 pip install -r requirements.txt
 - make migrations:
-python manage.py makemigrations
+python manage.py makemigrations, 
 python manage.py migrate
 - in manage.py directory:
 python3 manage.py runserver
 
-* Docker is also available : docker pull rbexter/yatube_project
+* Docker is also available: docker pull rbexter/yatube_project
 
-### API Yatube - (Yatube/api/README.md)
+### [API Yatube](Yatube/api/README.md)
 
 ### Author rbexter
