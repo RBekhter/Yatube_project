@@ -40,6 +40,6 @@ class PostModelTest(TestCase):
 
         expected_object_group_name = group.title
         self.assertEqual(expected_object_group_name, str(group))
-        
+
         expected_object_comment_text = comment.text
         self.assertEqual(expected_object_comment_text, str(comment))

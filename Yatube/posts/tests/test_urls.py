@@ -54,7 +54,6 @@ class PostURLTests(TestCase):
         templates_url_names = {
             'posts/index.html': '/',
             'posts/all_groups.html': '/groups/all/',
-            'posts/profile.html': '/Nobody/',
             'posts/group_list.html': '/group/Test-slug/',
             'posts/post_detail.html': '/post/1/',
             'posts/profile.html': '/my/profile/',

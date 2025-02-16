@@ -63,7 +63,7 @@ class PostPagesTests(TestCase):
         response = (self.authorized_client.
                     get(reverse('posts:post_detail',
                                 kwargs={'post_id': self.post.id})))
-        
+
         self.assertEqual(response.context.get('post').text, 'Test text')
         self.assertEqual(
             response.context.get('post').author, self.user
