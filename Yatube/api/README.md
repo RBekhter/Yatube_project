@@ -1,5 +1,6 @@
 # API YaTube
-```Get token:
+```
+Get token:
 POST..http://127.0.0.1:8000/api/v1/api-token-auth/
 body:
 {
@@ -13,7 +14,8 @@ OK: token
 ## Check, update, create posts
 
 ## Query examples:
-```GET..http://127.0.0.1:8000/api/v1/posts/
+```
+GET..http://127.0.0.1:8000/api/v1/posts/
 OK:
 [
     {
