@@ -1,37 +1,33 @@
 # API-Yatube
-
-## GET-запрос к корневому эндпоинту
-http://127.0.0.1:8000/api/v1/
-вернет список ссылок на все ресурсы, доступные в API:
-
-"posts": "http://127.0.0.1:8000/api/v1/posts/"
-"groups": "http://127.0.0.1:8000/api/v1/groups/"
-
-## Для авторизации нужно сделать POST-запрос к адресу:
-
-api/v1/api-token-auth/
-В теле запроса отправить имя пользователя и пароль:
+* Get token:
+POST..http://127.0.0.1:8000/api/v1/api-token-auth/
+body:
 {
     "username": "your_username",
     "password": "your_password"
 }
-В ответе вернется токен, его нужно передавать в head следующих запросов.
+OK: token
+* Token -> head
 
-## Пользователи имеют возможность просматривать, редактировать и добавлять новые записи.
+## Check, update, create posts
 
-## Примеры запросов
-GET http://127.0.0.1:8000/api/v1/posts/
-{
+## Query examples:
+* GET..http://127.0.0.1:8000/api/v1/posts/
+OK:
+[
+    {
         "id": 21,
         "author": "dashaa",
         "text": "Пост через Postman",
         "group": "IT",
         "publication_date": "2024-07-30T16:21:27.523654+03:00"
-    },
+    }
+]
 
-GET http://127.0.0.1:8000/api/v1/posts/7/comments/
+* GET..http://127.0.0.1:8000/api/v1/posts/7/comments/
 
-POST http://127.0.0.1:8000/api/v1/posts/
+* POST..http://127.0.0.1:8000/api/v1/posts/
+body:
 {
     "text": "Пост через Postman"
 }
