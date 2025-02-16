@@ -1,12 +1,13 @@
 # API YaTube
-* ```Get token:
+```Get token:
 POST..http://127.0.0.1:8000/api/v1/api-token-auth/
 body:
 {
     "username": "your_username",
     "password": "your_password"
 }
-OK: token```
+OK: token
+```
 * Token -> head
 
 ## Check, update, create posts
