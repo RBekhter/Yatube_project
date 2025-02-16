@@ -27,4 +27,4 @@ python3 manage.py runserver
 
 ### [API Yatube](Yatube/api/README.md)
 
-### Author [rbexter](https://github.com/RBekhter)
+### [GitHub](https://github.com/RBekhter)
